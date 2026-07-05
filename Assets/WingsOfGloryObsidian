@@ -1549,6 +1549,8 @@ function PositionDraggable(UI: GuiObject, StartPos: UDim2?)
     UI.Position = GetNonOverlappingPosition(UI, StartPos)
 end
 
+local ConditionServiceModule = game:GetService("StarterPlayer").StarterPlayerScripts.Client.ConditionService
+local ConditionService = require(ConditionServiceModule)
 function Library:MakeDraggable(UI: GuiObject, DragFrame: GuiObject, IgnoreToggled: boolean?, IsMainWindow: boolean?)
     local StartPos
     local FramePos
@@ -1556,8 +1558,6 @@ function Library:MakeDraggable(UI: GuiObject, DragFrame: GuiObject, IgnoreToggle
     local Changed
     local InputBegan
     local InputChanged
-
-    local ConditionService = _G:require("ConditionService")
 
     local function SetDraggingCondition(State: boolean)
         pcall(function()
